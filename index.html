@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellicia 9A ✨ - Grey Cat & Music Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bodoni Moda (Serif) & Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Bodoni Moda"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        frenchnavy: {
+                            950: '#0B132B', // Deepest French Navy
+                            900: '#1C2541', // Main French Navy Background
+                            800: '#2A365C', // Card Background
+                            700: '#3A4B7C', // Border Light
+                            accent: '#7C3AED', // Rarity Royal Purple
+                            glow: '#38BDF8', // Diamond Sky Glow
+                            rarity: '#A78BFA', // Soft Lavender Purple
+                            periwinkle: '#C4B5FD' // Periwinkle Color Accent
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B132B;
+        }
+        h1, h2, h3, .font-bodoni {
+            font-family: 'Bodoni Moda', serif;
+        }
+        .navy-diamond-pattern {
+            background-size: 30px 30px;
+            background-image: radial-gradient(circle, rgba(167, 139, 250, 0.25) 1.5px, transparent 1.5px);
+        }
+        .glass-header {
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        
+        /* Floating Diamond & Star Pop Animation */
+        @keyframes diamondJump {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 0; }
+            50% { transform: translate(-50%, -100%) scale(1.3) rotate(15deg); opacity: 1; }
+            100% { transform: translate(-50%, -150%) scale(0.8) rotate(0deg); opacity: 0; }
+        }
+        .diamond-pop {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            animation: diamondJump 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body class="bg-frenchnavy-950 text-slate-100 transition-colors duration-300 antialiased min-h-screen flex flex-col navy-diamond-pattern">
+
+    <!-- ========================================================= -->
+    <!-- VISITOR / FRONTEND LANDING PAGE                           -->
+    <!-- ========================================================= -->
+    <div id="visitorView" class="flex flex-col min-h-screen">
+        
+        <!-- NAVBAR -->
+        <header class="sticky top-0 z-40 glass-header border-b border-frenchnavy-700/60 transition-colors">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo / Brand -->
+                    <a href="#" class="flex items-center gap-2 font-bodoni font-bold text-xl sm:text-2xl tracking-tight text-white">
+                        <span class="w-9 h-9 rounded-full bg-purple-600 text-white flex items-center justify-center font-extrabold text-base shadow-lg shadow-purple-500/30 border border-purple-400">
+                            💎
+                        </span>
+                        <span id="navBrandName">Fellicia<span class="text-frenchnavy-rarity font-sans text-lg font-bold">.9A ✨</span></span>
+                    </a>
+
+                    <!-- Desktop Nav -->
+                    <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                        <a href="#projects" class="text-slate-300 hover:text-frenchnavy-periwinkle transition flex items-center gap-1">
+                            <span>🎨 Karya & Project</span>
+                        </a>
+                        <a href="#music" class="text-slate-300 hover:text-frenchnavy-periwinkle transition flex items-center gap-1">
+                            <span>🎵 Musik & Favorit</span>
+                        </a>
+                        <a href="#about" class="text-slate-300 hover:text-frenchnavy-periwinkle transition flex items-center gap-1">
+                            <span>💖 Tentang Fellicia</span>
+                        </a>
+                        <a href="#skills" class="text-slate-300 hover:text-frenchnavy-periwinkle transition flex items-center gap-1">
+                            <span>🎤 Hobi & Skill</span>
+                        </a>
+                        <a href="#contact" class="text-slate-300 hover:text-frenchnavy-periwinkle transition flex items-center gap-1">
+                            <span>💌 Kirim Pesan</span>
+                        </a>
+                    </nav>
+
+                    <!-- Action Controls -->
+                    <div class="flex items-center gap-3">
+                        <!-- Admin Access Button -->
+                        <button onclick="showLoginModal()" class="p-2 rounded-full border border-frenchnavy-700 hover:bg-frenchnavy-800 text-slate-300 transition" title="Login Portal Admin Fellicia">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Contact CTA Button -->
+                        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold shadow-lg shadow-purple-500/30 border border-purple-400/30 transition gap-1.5">
+                            <span>Sapa Fellicia</span> 💎
+                        </a>
+
+                        <!-- Mobile Menu Toggle Button -->
+                        <button id="menuToggle" class="md:hidden p-2 rounded-lg border border-frenchnavy-700 text-slate-300 hover:bg-frenchnavy-800 transition">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Nav Menu -->
+            <div id="mobileMenu" class="hidden md:hidden border-b border-frenchnavy-700 bg-frenchnavy-900/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-3">
+                <a href="#projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-frenchnavy-800">🎨 Karya & Project</a>
+                <a href="#music" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-frenchnavy-800">🎵 Musik & K-Pop</a>
+                <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-frenchnavy-800">💖 Tentang Fellicia</a>
+                <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-frenchnavy-800">🎤 Hobi & Keahlian</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-frenchnavy-800">💌 Kirim Pesan</a>
+                <a href="#contact" class="mobile-link block w-full text-center py-2.5 rounded-full bg-purple-600 text-white font-medium">Sapa Fellicia 💎</a>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-grow">
+            
+            <!-- HERO SECTION -->
+            <section class="py-12 sm:py-20 lg:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <!-- Text Content -->
+                    <div class="flex-1 text-center lg:text-left space-y-6">
+                        <!-- Status Badge -->
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/40 text-xs sm:text-sm font-semibold text-purple-300 shadow-md">
+                            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                            <span id="heroBadge">✨ Siswa Kelas 9A - Mutiara Bangsa 2 ✨</span>
+                        </div>
+
+                        <!-- Main Bodoni Title -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bodoni font-extrabold tracking-tight text-white leading-tight" id="heroTitle">
+                            Halo, Saya <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-sky-300">Fellicia</span> 💎
+                        </h1>
+
+                        <!-- Dynamic Typewriter Text (PERIWINKLE COLOR) -->
+                        <div class="h-12 flex items-center justify-center lg:justify-start">
+                            <p class="text-lg sm:text-2xl font-bold text-[#C4B5FD]">
+                                Saya seorang <span id="typewriter" class="underline decoration-purple-300 decoration-wavy"></span><span class="animate-pulse text-[#C4B5FD]">|</span>
+                            </p>
+                        </div>
+
+                        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed" id="heroSubtitle">
+                            Selamat datang di ruang kreatif pribadi saya! Di sini saya membagikan karya gambar, membaca novel fiksi, bernyanyi, menari, musik R&B/Jazz & K-Pop favorit, serta project-project seru dari sekolah Mutiara Bangsa 2.
+                        </p>
+
+                        <!-- CTAs -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#projects" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-semibold text-center shadow-lg shadow-purple-500/30 transition flex items-center justify-center gap-2 border border-purple-400/30">
+                                <span>Jelajahi Karya Saya</span> 🎨
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#music" class="w-full sm:w-auto px-7 py-3.5 rounded-full border-2 border-frenchnavy-700 hover:bg-frenchnavy-800 font-semibold text-center text-slate-200 transition">
+                                Musik & K-Pop Favorit 🎧
+                            </a>
+                        </div>
+
+                        <!-- Highlight Stats -->
+                        <div class="pt-8 border-t border-frenchnavy-700/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-bodoni font-extrabold text-purple-300" id="statProjects">12+</p>
+                                <p class="text-xs sm:text-sm text-slate-400">Karya & Project 🎨</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl sm:text-3xl font-bodoni font-extrabold text-purple-300" id="statExp">Kelas 9A</p>
+                                <p class="text-xs sm:text-sm text-slate-400">SMB 2 School 🏫</p>
+                    <!-- Grey Cat Profile Card Visual -->
+                    <div class="w-full lg:w-5/12 flex justify-center">
+                        <div class="relative w-full max-w-md bg-frenchnavy-900 rounded-3xl p-5 shadow-2xl border-2 border-purple-500/40">
+                            <!-- Card Header -->
+                            <div class="flex items-center justify-between pb-3 mb-4 border-b border-frenchnavy-700">
+                                <div class="flex space-x-1.5">
+                                    <div class="w-3.5 h-3.5 rounded-full bg-purple-500"></div>
+                                    <div class="w-3.5 h-3.5 rounded-full bg-sky-400"></div>
+                                    <div class="w-3.5 h-3.5 rounded-full bg-pink-400"></div>
+                                </div>
+                                <span class="text-xs font-mono text-purple-300 font-semibold">Grey_Cat_Profile.cat 🐱</span>
+                                <span class="text-xs">🐱✨💖</span>
+                            </div>
+
+                            <!-- Grey Cat Character Vector Image -->
+                            <div class="relative rounded-2xl overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-indigo-950 p-6 flex flex-col items-center justify-center text-center shadow-inner border border-purple-800">
+                                <!-- Background Diamond Sparkle Decor -->
+                                <div class="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
+                                <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-sky-500/20 rounded-full blur-xl"></div>
+
+                                <!-- SVG Cute Grey Cat Vector -->
+                                <div class="w-40 h-40 sm:w-48 sm:h-48 relative mb-3 drop-shadow-xl hover:scale-105 transition duration-300 cursor-pointer" title="Kucing Abu-Abu Cute!">
+                                    <svg viewBox="0 0 200 200" class="w-full h-full">
+                                        <!-- Cat Ears (Outer Grey, Inner Pink) -->
+                                        <polygon points="45,85 25,25 80,50" fill="#94a3b8" />
+                                        <polygon points="45,80 32,35 72,55" fill="#f472b6" />
+                                        <polygon points="155,85 175,25 120,50" fill="#94a3b8" />
+                                        <polygon points="155,80 168,35 128,55" fill="#f472b6" />
+
+                                        <!-- Cat Head (Grey Fluffy Head) -->
+                                        <ellipse cx="100" cy="110" rx="60" ry="50" fill="#64748b" />
+                                        <!-- Cheeks / Lower Face Highlight -->
+                                        <ellipse cx="100" cy="122" rx="42" ry="32" fill="#94a3b8" />
+
+                                        <!-- Sparkle Bow on Ear -->
+                                        <path d="M 130,45 C 125,35 110,35 115,48 C 120,58 145,58 145,48 Z" fill="#a855f7" />
+                                        <path d="M 160,45 C 165,35 180,35 175,48 C 170,58 145,58 145,48 Z" fill="#a855f7" />
+                                        <circle cx="145" cy="48" r="7" fill="#c084fc" />
+                                        <polygon points="145,42 147,46 151,48 147,50 145,54 143,50 139,48 143,46" fill="#ffffff" />
+
+                                        <!-- Cute Big Emerald Green Eyes -->
+                                        <ellipse cx="75" cy="105" rx="14" ry="18" fill="#ffffff" />
+                                        <ellipse cx="125" cy="105" rx="14" ry="18" fill="#ffffff" />
+                                        <ellipse cx="77" cy="106" rx="9" ry="13" fill="#10b981" />
+                                        <ellipse cx="123" cy="106" rx="9" ry="13" fill="#10b981" />
+                                        <ellipse cx="78" cy="107" rx="5" ry="8" fill="#064e3b" />
+                                        <ellipse cx="122" cy="107" rx="5" ry="8" fill="#064e3b" />
+                                        <!-- Eye Sparkle Highlights -->
+                                        <circle cx="74" cy="99" r="4" fill="#ffffff" />
+                                        <circle cx="120" cy="99" r="4" fill="#ffffff" />
+                                        <circle cx="80" cy="112" r="2" fill="#ffffff" />
+                                        <circle cx="126" cy="112" r="2" fill="#ffffff" />
+
+                                        <!-- Nose (Cute Pink Triangle) -->
+                                        <polygon points="100,120 95,114 105,114" fill="#f43f5e" />
+                                        
+                                        <!-- Mouth -->
+                                        <path d="M 100,120 Q 94,128 88,124" stroke="#334155" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                                        <path d="M 100,120 Q 106,128 112,124" stroke="#334155" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+                                        <!-- Blush Cheeks -->
+                                        <ellipse cx="58" cy="118" rx="8" ry="5" fill="#f472b6" opacity="0.6" />
+                                        <ellipse cx="142" cy="118" rx="8" ry="5" fill="#f472b6" opacity="0.6" />
+
+                                        <!-- Whiskers -->
+                                        <line x1="55" y1="112" x2="20" y2="106" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                                        <line x1="52" y1="120" x2="18" y2="120" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                                        <line x1="55" y1="128" x2="22" y2="134" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                                        
+                                        <line x1="145" y1="112" x2="180" y2="106" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                                        <line x1="148" y1="120" x2="182" y2="120" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                                        <line x1="145" y1="128" x2="178" y2="134" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                                    </svg>
+                                </div>
+
+                                <h3 class="font-bodoni font-bold text-xl text-purple-200">Grey Cat Spirit 🐱</h3>
+                                <p class="text-xs text-purple-300 font-medium">Cute, Playful & Fluffy Style</p>
+                            </div>
+
+                            <!-- Diamond & Sparkle Feature Badge -->
+                            <div class="mt-3 p-3 bg-frenchnavy-800 rounded-xl border border-purple-500/30 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="text-2xl">🐱</span>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white">Grey Cat Sparkle Magic</h4>
+                                        <p class="text-[10px] text-frenchnavy-glow font-semibold">Klik di mana saja untuk memunculkan Sparkle & Bintang! ✨</p>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-purple-950 text-purple-300 text-[10px] font-bold rounded-md border border-purple-700">🐱 Grey Cat Vibe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MUSIC & FAVORITES SECTION (WESTERN + K-POP) -->
+            <section id="music" class="py-16 bg-frenchnavy-900/80 border-y border-frenchnavy-700/60">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center space-y-3 mb-12">
+                        <div class="inline-flex items-center gap-2 text-purple-400 font-semibold text-sm tracking-wide uppercase">
+                            <span>🎧 Selera Musik Fellicia</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bodoni font-extrabold text-white">
+                            Genre Musik & Top Artists Favorit 🎵
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+                            Lagu-lagu yang menemani Fellicia saat belajar, membaca novel, menggambar, dan bersantai.
+                        </p>
+                    </div>
+
+                    <!-- Music Genres Grid -->
+                    <div class="mb-10 bg-frenchnavy-800 p-6 sm:p-8 rounded-3xl border border-frenchnavy-700 space-y-4">
+                        <h3 class="text-xl font-bodoni font-bold text-white flex items-center gap-2">
+                            <span>🎶 Genre Musik Favorit</span>
+                        </h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/30 text-center space-y-1">
+                                <span class="text-3xl">🎷</span>
+                                <h4 class="text-sm font-bold text-white">R&B</h4>
+                                <p class="text-[10px] text-purple-300">Smooth & Soulful</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/30 text-center space-y-1">
+                                <span class="text-3xl">🎤</span>
+                                <h4 class="text-sm font-bold text-white">Pop</h4>
+                                <p class="text-[10px] text-purple-300">Catchy & Fun</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/30 text-center space-y-1">
+                                <span class="text-3xl">🎹</span>
+                                <h4 class="text-sm font-bold text-white">Jazz</h4>
+                                <p class="text-[10px] text-purple-300">Calm & Vintage</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/30 text-center space-y-1">
+                                <span class="text-3xl">💖</span>
+                                <h4 class="text-sm font-bold text-white">K-Pop</h4>
+                                <p class="text-[10px] text-purple-300">Energetic & Stylist</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top 3 Western & K-Pop Artists Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        
+                        <!-- K-Pop Top 3 + Biases -->
+                        <div class="bg-frenchnavy-800 p-6 sm:p-8 rounded-3xl border border-frenchnavy-700 space-y-4">
+                            <h3 class="text-xl font-bodoni font-bold text-white flex items-center gap-2">
+                                <span>👑 Top 3 K-Pop Artists & Bias</span>
+                            </h3>
+                            <div class="space-y-3">
+                                <!-- Kpop Artist 1 -->
+                                <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-400 text-slate-950 font-extrabold text-sm flex items-center justify-center">1</span>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">LNGSHOT</h4>
+                                            <p class="text-[11px] text-purple-300 font-semibold">Bias: Louis 💖</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs bg-purple-950 text-purple-300 px-3 py-1 rounded-full border border-purple-700">#1 K-Pop</span>
+                                </div>
+                                <!-- Kpop Artist 2 -->
+                                <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-slate-300 text-slate-950 font-extrabold text-sm flex items-center justify-center">2</span>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">CORTIS</h4>
+                                            <p class="text-[11px] text-purple-300 font-semibold">Bias: Martin 💖</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs bg-purple-950 text-purple-300 px-3 py-1 rounded-full border border-purple-700">#2 K-Pop</span>
+                                </div>
+                                <!-- Kpop Artist 3 -->
+                                <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-purple-500/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-700 text-white font-extrabold text-sm flex items-center justify-center">3</span>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">BLACKPINK</h4>
+                                            <p class="text-[11px] text-purple-300 font-semibold">Bias: Jennie 💖</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs bg-purple-950 text-purple-300 px-3 py-1 rounded-full border border-purple-700">#3 K-Pop</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top 3 Western Artists -->
+                        <div class="bg-frenchnavy-800 p-6 sm:p-8 rounded-3xl border border-frenchnavy-700 space-y-4">
+                            <h3 class="text-xl font-bodoni font-bold text-white flex items-center gap-2">
+                                <span>🏆 Top 3 Favorite Western Artists</span>
+                            </h3>
+                            <div class="space-y-3">
+                                <!-- Artist 1 -->
+                                <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-indigo-500/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-400 text-slate-950 font-extrabold text-sm flex items-center justify-center">1</span>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">Rex Orange County</h4>
+                                            <p class="text-[11px] text-slate-400">Indie Pop / Bedroom Pop</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs bg-indigo-950 text-indigo-300 px-3 py-1 rounded-full border border-indigo-700">#1 West</span>
+                                </div>
+                                <!-- Artist 2 -->
+                                <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-indigo-500/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-slate-300 text-slate-950 font-extrabold text-sm flex items-center justify-center">2</span>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">Daniel Caesar</h4>
+                                            <p class="text-[11px] text-slate-400">R&B / Soul</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs bg-indigo-950 text-indigo-300 px-3 py-1 rounded-full border border-indigo-700">#2 West</span>
+                                </div>
+                                <!-- Artist 3 -->
+                                <div class="p-4 rounded-2xl bg-frenchnavy-950/80 border border-indigo-500/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-amber-700 text-white font-extrabold text-sm flex items-center justify-center">3</span>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-white">Laufey</h4>
+                                            <p class="text-[11px] text-slate-400">Jazz / Traditional Pop</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs bg-indigo-950 text-indigo-300 px-3 py-1 rounded-full border border-indigo-700">#3 West</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PROJECTS SECTION (CARD SHOWCASE) -->
+            <section id="projects" class="py-16">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Section Header -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm tracking-wide uppercase mb-1">
+                                <span>🎨 Galeri & Portfolio</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl font-bodoni font-extrabold text-white">
+                                Karya & Project Fellicia ✨
+                            </h2>
+                            <p class="text-slate-300 text-sm sm:text-base mt-1">
+                                Kumpulan hasil gambar, koleksi bacaan novel, penampilan bernyanyi & menari, serta tugas sekolah Mutiara Bangsa 2.
+                            </p>
+                        </div>
+
+                        <!-- Category Filter Tabs -->
+                        <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="filterContainer">
+                            <button class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition whitespace-nowrap bg-purple-600 text-white shadow-md shadow-purple-500/30" data-filter="all">
+                                Semua ✨
+                            </button>
+                            <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:bg-frenchnavy-800 transition whitespace-nowrap" data-filter="menggambar">
+                                Menggambar 🎨
+                            </button>
+                            <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:bg-frenchnavy-800 transition whitespace-nowrap" data-filter="novel">
+                                Novel 📚
+                            </button>
+                            <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:bg-frenchnavy-800 transition whitespace-nowrap" data-filter="menyanyi">
+                                Menyanyi 🎤
+                            </button>
+                            <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:bg-frenchnavy-800 transition whitespace-nowrap" data-filter="menari">
+                                Menari 💃
+                            </button>
+                            <button class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:bg-frenchnavy-800 transition whitespace-nowrap" data-filter="sekolah">
+                                Tugas SMB 2 🏫
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Projects Grid Dynamic -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="projectsGrid">
+                        <!-- Dynamic Cards Rendered by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABOUT & SKILLS SECTION -->
+            <section id="about" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- About Left Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 text-purple-400 font-semibold text-sm tracking-wide uppercase">
+                            <span>💖 Biodata Singkat</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bodoni font-extrabold text-white" id="aboutHeading">
+                            Siswa Kelas 9A yang Ceria & Suka Seni ✨
+                        </h2>
+                        <p class="text-slate-300 leading-relaxed text-sm sm:text-base" id="aboutText1">
+                            Halo! Nama saya Fellicia dari kelas 9A Sekolah Mutiara Bangsa 2. Saya sangat menyukai dunia seni, membaca novel, musik K-Pop, dan ekspresi kreatif.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed text-sm sm:text-base" id="aboutText2">
+                            Hari-hari saya diisi dengan mendengarkan musik R&B, Pop, Jazz, & K-Pop favorit dari LNGSHOT (bias: Louis), CORTIS (bias: Martin), BLACKPINK (bias: Jennie), Rex Orange, Daniel Caesar, Laufey, serta menggambar Rarity dan membaca novel-novel seru!
+                        </p>
+                    </div>
+
+                    <!-- Skills Right Column -->
+                    <div id="skills" class="lg:col-span-7 space-y-6 bg-frenchnavy-900 p-6 sm:p-8 rounded-3xl border-2 border-purple-500/30 shadow-md">
+                        <h3 class="text-2xl font-bodoni font-bold text-white flex items-center gap-2">
+                            <span>🎤 Hobi & Keahlian Fellicia</span>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-400">
+                            Hal-hal yang paling Fellicia sukai dan tekuni sehari-hari:
+                        </p>
+
+                        <div id="skillsContainer" class="space-y-4">
+                            <!-- Dynamic Skills Rendered via JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section id="contact" class="py-16 bg-frenchnavy-900/80 border-t border-frenchnavy-700/60">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center space-y-4 mb-12">
+                        <div class="inline-flex items-center gap-2 text-purple-400 font-semibold text-sm tracking-wide uppercase">
+                            <span>💌 Kirim Pesan & Salam</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bodoni font-extrabold text-white">
+                            Mari Berteman dengan Fellicia! 💎
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+                            Ingin rekomendasi novel seru, ngobrol K-Pop (LNGSHOT, CORTIS, BLACKPINK), lagu R&B/Jazz, atau masukan gambar? Kirimkan pesan di bawah ini!
+                        </p>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="bg-frenchnavy-800 rounded-3xl p-6 sm:p-8 border-2 border-purple-500/30 shadow-xl">
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Nama Kamu ✨</label>
+                                    <input type="text" id="senderName" required placeholder="Contoh: Teman K-Pop / Novel SMB 2" class="w-full px-4 py-2.5 rounded-xl border border-frenchnavy-700 bg-frenchnavy-950 text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Email / Kontak 📧</label>
+                                    <input type="email" id="senderEmail" required placeholder="email@contoh.com" class="w-full px-4 py-2.5 rounded-xl border border-frenchnavy-700 bg-frenchnavy-950 text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Subjek 🌸</label>
+                                <input type="text" id="senderSubject" required placeholder="Sapaan / Rekomendasi Novel & Musik" class="w-full px-4 py-2.5 rounded-xl border border-frenchnavy-700 bg-frenchnavy-950 text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Pesan Manis Kamu 💬</label>
+                                <textarea id="senderMessage" rows="4" required placeholder="Tuliskan pesan kamu untuk Fellicia..." class="w-full px-4 py-2.5 rounded-xl border border-frenchnavy-700 bg-frenchnavy-950 text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 border border-purple-400/30">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Kirim Pesan ke Fellicia</span> 💎
+                            </button>
+                        </form>
+
+                        <div id="formAlert" class="hidden mt-4 p-4 rounded-2xl text-center text-sm font-medium bg-purple-950 text-purple-200 border border-purple-700">
+                            Pesan manis kamu sudah terkirim! Terima kasih ya sudah menyapa Fellicia! ✨💎
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-frenchnavy-950 border-t border-frenchnavy-700/60 py-8 text-center text-xs sm:text-sm text-slate-400">
+            <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>© 2026 Fellicia (Kelas 9A - Sekolah Mutiara Bangsa 2). Grey Cat & Music Theme 🐱</p>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showLoginModal()" class="hover:text-frenchnavy-glow transition flex items-center gap-1 font-medium">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Admin Fellicia
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- BACKEND ADMIN PANEL (FULLSCREEN DASHBOARD)                -->
+    <!-- ========================================================= -->
+    <div id="adminView" class="hidden min-h-screen bg-frenchnavy-950 text-slate-100 flex flex-col md:flex-row">
+        
+        <!-- SIDEBAR -->
+        <aside class="w-full md:w-64 bg-frenchnavy-900 border-r border-frenchnavy-700 flex flex-col justify-between shrink-0">
+            <div>
+                <!-- Brand / Logo Header -->
+                <div class="h-16 px-6 flex items-center justify-between border-b border-frenchnavy-700">
+                    <div class="flex items-center gap-2 font-bodoni font-bold text-lg">
+                        <span class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-extrabold">F</span>
+                        <span>Fellicia<span class="text-purple-400 font-sans text-xs">Admin</span></span>
+                    </div>
+                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-mono">Rarity Theme</span>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="p-4 space-y-1.5 text-sm font-medium">
+                    <button onclick="switchAdminTab('overview')" class="admin-tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-purple-600 text-white transition" data-tab="overview">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Overview
+                    </button>
+                    <button onclick="switchAdminTab('projects')" class="admin-tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-frenchnavy-800 transition" data-tab="projects">
+                        <i data-lucide="folder-kanban" class="w-4 h-4"></i> Kelola Karya
+                    </button>
+                    <button onclick="switchAdminTab('profile')" class="admin-tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-frenchnavy-800 transition" data-tab="profile">
+                        <i data-lucide="user-cog" class="w-4 h-4"></i> Profile & Hobi
+                    </button>
+                    <button onclick="switchAdminTab('messages')" class="admin-tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-frenchnavy-800 transition justify-between" data-tab="messages">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="inbox" class="w-4 h-4"></i> Pesan Masuk
+                        </div>
+                        <span id="unreadBadge" class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button onclick="switchAdminTab('settings')" class="admin-tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-frenchnavy-800 transition" data-tab="settings">
+                        <i data-lucide="key-round" class="w-4 h-4"></i> Password Admin
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Footer Sidebar Actions -->
+            <div class="p-4 border-t border-frenchnavy-700 space-y-2">
+                <button onclick="exitAdminView()" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-frenchnavy-800 hover:bg-frenchnavy-700 text-xs font-semibold text-slate-200 transition">
+                    <i data-lucide="eye" class="w-4 h-4"></i> Lihat Website
+                </button>
+                <button onclick="handleLogout()" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 text-xs font-semibold transition border border-rose-500/20">
+                    <i data-lucide="log-out" class="w-4 h-4"></i> Keluar
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN DASHBOARD CONTENT AREA -->
+        <main class="flex-grow p-6 md:p-10 overflow-y-auto max-h-screen">
+            
+            <!-- TAB 1: OVERVIEW -->
+            <div id="adminTabOverview" class="admin-tab-content space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bodoni font-bold text-white">Dashboard Overview Fellicia ✨</h1>
+                    <p class="text-xs text-slate-400 mt-1">Ringkasan karya seni dan pesan masuk pengunjung web.</p>
+                </div>
+
+                <!-- Stat Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-2xl bg-frenchnavy-900 border border-frenchnavy-700 flex items-center gap-4">
+                        <div class="p-3 rounded-xl bg-purple-500/20 text-purple-400">
+                            <i data-lucide="palette" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase font-semibold">Total Karya</span>
+                            <h3 id="dashTotalProjects" class="text-2xl font-extrabold text-white">0</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-frenchnavy-900 border border-frenchnavy-700 flex items-center gap-4">
+                        <div class="p-3 rounded-xl bg-indigo-500/20 text-indigo-400">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase font-semibold">Total Pesan</span>
+                            <h3 id="dashTotalMessages" class="text-2xl font-extrabold text-white">0</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-frenchnavy-900 border border-frenchnavy-700 flex items-center gap-4">
+                        <div class="p-3 rounded-xl bg-sky-500/20 text-sky-400">
+                            <i data-lucide="smile" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase font-semibold">Status Auth</span>
+                            <h3 class="text-base font-bold text-purple-300">Fellicia 9A ✨</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Help Card -->
+                <div class="p-6 rounded-2xl bg-frenchnavy-900 border border-frenchnavy-700 space-y-3">
+                    <h3 class="font-bold text-base text-purple-300">Panduan Pengelolaan Content</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Kamu bisa menambah atau mengedit judul menggambar, rekomendasi novel, rekaman bernyanyi, serta menari kapan saja! Semua perubahan akan langsung otomatis tampil di web utama.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TAB 2: KELOLA PROJECT -->
+            <div id="adminTabProjects" class="admin-tab-content hidden space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h1 class="text-2xl font-bodoni font-bold text-white">Kelola Karya & Project</h1>
+                        <p class="text-xs text-slate-400 mt-1">Tambah, edit, atau hapus kartu karya menggambar, novel, menari, dan menyanyi.</p>
+                    </div>
+                    <button onclick="openProjectModal()" class="px-4 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold flex items-center gap-2 transition w-fit shadow-md">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Tambah Karya Baru
+                    </button>
+                </div>
+
+                <!-- Project Items Table/List -->
+                <div class="bg-frenchnavy-900 border border-frenchnavy-700 rounded-2xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-frenchnavy-950 text-slate-400 uppercase border-b border-frenchnavy-700">
+                                <tr>
+                                    <th class="p-4">Judul Karya</th>
+                                    <th class="p-4">Kategori</th>
+                                    <th class="p-4">Tag/Keterangan</th>
+                                    <th class="p-4 text-right">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminProjectTable" class="divide-y divide-frenchnavy-700">
+                                <!-- Dynamic Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: PROFILE & SKILLS -->
+            <div id="adminTabProfile" class="admin-tab-content hidden space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bodoni font-bold text-white">Kelola Bio & Teks Website</h1>
+                    <p class="text-xs text-slate-400 mt-1">Ubah nama brand, badge, dan paragraf tentang kamu.</p>
+                </div>
+
+                <form onsubmit="saveProfileSettings(event)" class="space-y-6 bg-frenchnavy-900 p-6 rounded-2xl border border-frenchnavy-700">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nama Brand Navigasi</label>
+                            <input type="text" id="inputBrandName" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Hero Badge Text</label>
+                            <input type="text" id="inputHeroBadge" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Sub-Judul Hero</label>
+                        <textarea id="inputHeroSub" rows="2" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Tentang Fellicia (Paragraf 1)</label>
+                            <textarea id="inputAbout1" rows="3" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Tentang Fellicia (Paragraf 2)</label>
+                            <textarea id="inputAbout2" rows="3" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold transition">
+                        Simpan Perubahan Bio
+                    </button>
+                </form>
+            </div>
+
+            <!-- TAB 4: PESAN MASUK -->
+            <div id="adminTabMessages" class="admin-tab-content hidden space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bodoni font-bold text-white">Pesan Masuk (Inquiries)</h1>
+                    <p class="text-xs text-slate-400 mt-1">Pesan manis yang dikirim oleh teman-teman atau pengunjung.</p>
+                </div>
+
+                <div class="space-y-3" id="messageListContainer">
+                    <!-- Dynamic Messages List -->
+                </div>
+            </div>
+
+            <!-- TAB 5: PENGATURAN KREDENSIAL ADMIN -->
+            <div id="adminTabSettings" class="admin-tab-content hidden space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bodoni font-bold text-white">Pengaturan Keamanan Login</h1>
+                    <p class="text-xs text-slate-400 mt-1">Ubah Username dan Password untuk akses admin panel ini.</p>
+                </div>
+
+                <form onsubmit="saveAdminCredentials(event)" class="max-w-md space-y-4 bg-frenchnavy-900 p-6 rounded-2xl border border-frenchnavy-700">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Username Baru</label>
+                        <input type="text" id="newUsername" required class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Password Baru</label>
+                        <input type="password" id="newPassword" required placeholder="••••••••" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                    </div>
+                    <button type="submit" class="w-full py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold transition">
+                        Update Password
+                    </button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL WINDOWS & POPUPS                                    -->
+    <!-- ========================================================= -->
+
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-frenchnavy-950/80 backdrop-blur-sm">
+        <div class="bg-frenchnavy-900 rounded-3xl max-w-sm w-full p-6 border border-frenchnavy-700 shadow-2xl relative space-y-4 text-white">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold mx-auto mb-2 shadow-lg shadow-purple-500/30">
+                    <span>💎</span>
+                </div>
+                <h3 class="text-xl font-bodoni font-bold">Admin Fellicia 9A</h3>
+                <p class="text-xs text-slate-400">Masukan login untuk kelola karya website</p>
+            </div>
+
+            <form onsubmit="handleLoginSubmit(event)" class="space-y-3 pt-2">
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Username</label>
+                    <input type="text" id="loginUser" required class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Password</label>
+                    <input type="password" id="loginPass" required class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                </div>
+                <div id="loginError" class="hidden text-xs text-rose-400 font-medium text-center">
+                    Username atau password salah!
+                </div>
+                <button type="submit" class="w-full py-2.5 rounded-full bg-purple-600 hover:bg-purple-500 font-semibold text-xs transition">
+                    Masuk Admin ✨
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PROJECT EDIT/ADD MODAL -->
+    <div id="projectEditModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-frenchnavy-950/80 backdrop-blur-sm">
+        <div class="bg-frenchnavy-900 rounded-3xl max-w-lg w-full p-6 border border-frenchnavy-700 shadow-2xl relative space-y-4 text-white">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <h3 id="projectModalHeading" class="text-xl font-bodoni font-bold">Tambah Karya Baru</h3>
+
+            <form onsubmit="saveProjectForm(event)" class="space-y-3">
+                <input type="hidden" id="editProjectId">
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Judul Karya / Project</label>
+                    <input type="text" id="projTitle" required class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Kategori Hobi/Seni</label>
+                    <select id="projCategory" class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                        <option value="menggambar">Menggambar 🎨</option>
+                        <option value="novel">Membaca Novel 📚</option>
+                        <option value="menyanyi">Menyanyi 🎤</option>
+                        <option value="menari">Menari 💃</option>
+                        <option value="sekolah">Tugas SMB 2 🏫</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Deskripsi Karya</label>
+                    <textarea id="projDesc" rows="3" required class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Tag / Alat yang Dipakai (pisahkan dengan koma)</label>
+                    <input type="text" id="projTech" placeholder="Novel Fiksi, Young Adult, Cover K-Pop" required class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Link Gambar/Audio</label>
+                        <input type="text" id="projGithub" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold uppercase text-slate-400 mb-1">Link Demo / Video</label>
+                        <input type="text" id="projDemo" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-frenchnavy-950 border border-frenchnavy-700 text-xs text-white focus:outline-none focus:ring-1 focus:ring-purple-400">
+                    </div>
+                </div>
+                <div class="pt-2 flex justify-end gap-2">
+                    <button type="button" onclick="closeProjectModal()" class="px-4 py-2 rounded-full border border-frenchnavy-700 text-xs font-semibold text-slate-300">Batal</button>
+                    <button type="submit" class="px-5 py-2 rounded-full bg-purple-600 text-xs font-semibold text-white">Simpan Karya</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PROJECT DETAIL MODAL (VISITOR) -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-frenchnavy-950/80 backdrop-blur-sm">
+        <div class="bg-frenchnavy-900 rounded-3xl max-w-xl w-full p-6 sm:p-8 border-2 border-purple-500/40 shadow-2xl relative space-y-4 text-white">
+            <button onclick="closeModal()" class="absolute top-4 right-4 p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-frenchnavy-800 transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bodoni font-bold text-white pr-6">Detail Karya</h3>
+            <p id="modalDesc" class="text-sm text-slate-300 leading-relaxed">Deskripsi lengkap karya.</p>
+            <div>
+                <h4 class="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2">Tag & Alat Seni</h4>
+                <div id="modalTech" class="flex flex-wrap gap-1.5"></div>
+            </div>
+            <div class="pt-4 border-t border-frenchnavy-700 flex justify-end gap-3">
+                <a id="modalSourceBtn" href="#" target="_blank" class="px-4 py-2 rounded-full border border-frenchnavy-700 text-xs font-semibold text-slate-200 hover:bg-frenchnavy-800 transition flex items-center gap-1.5">
+                    <span>Lihat Gambar / Berkas</span> 🖼️
+                </a>
+                <a id="modalDemoBtn" href="#" target="_blank" class="px-4 py-2 rounded-full bg-purple-600 text-white text-xs font-semibold hover:bg-purple-500 transition flex items-center gap-1.5">
+                    <span>Lihat Video / Demo</span> ✨
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT LOGIC & STATE MANAGEMENT                       -->
+    <!-- ========================================================= -->
+    <script>
+        // 1. Initial Fellicia Portfolio Seed Data
+        const defaultProjects = [
+            { id: 1, title: 'Sketsa Kucing Abu-Abu Cute 🎨', category: 'menggambar', desc: 'Gambar tangan warna-warni karakter kucing abu-abu yang menggemaskan dengan detail pita ungu dan mata hijau berkilau.', tech: ['Pensil Warna', 'Kucing Abu-Abu', 'Fan Art'], github: '#', demo: '#' },
+            { id: 2, title: 'Koleksi & Review Novel Favorit 📚', category: 'novel', desc: 'Rangkuman catatan dan rekomendasi novel-novel fiksi fantasi serta romance seru yang telah Fellicia baca.', tech: ['Fiksi & Fantasi', 'Young Adult', 'Review Buku'], github: '#', demo: '#' },
+            { id: 3, title: 'Cover Dance BLACKPINK & K-Pop 🎤', category: 'menyanyi', desc: 'Rekaman bernyanyi & dance lagu K-Pop favorit di acara pentas seni sekolah Mutiara Bangsa 2.', tech: ['Vokal K-Pop', 'Pentas Seni', 'SMB 2 Event'], github: '#', demo: '#' },
+            { id: 4, title: 'Koreografi Modern Dance LNGSHOT 💃', category: 'menari', desc: 'Latihan tarian kelompok modern dengan iringan lagu K-Pop favorit bersama teman-teman kelas 9A.', tech: ['Modern Dance', 'K-Pop Dance', 'Kelas 9A'], github: '#', demo: '#' },
+            { id: 5, title: 'Proyek Poster Seni & Budaya 🏫', category: 'sekolah', desc: 'Tugas kelompok membuat poster kreatif bertema kebudayaan Indonesia di Sekolah Mutiara Bangsa 2.', tech: ['Tugas Sekolah', 'Desain Poster', 'SMB 2'], github: '#', demo: '#' }
+        ];
+
+        const defaultSkills = [
+            { category: '👑 K-Pop & Bias Favorit', items: ['LNGSHOT (Bias: Louis)', 'CORTIS (Bias: Martin)', 'BLACKPINK (Bias: Jennie)'] },
+            { category: '🎧 Selera Musik', items: ['R&B', 'Pop', 'Jazz', 'K-Pop', 'Rex Orange County', 'Daniel Caesar', 'Laufey'] },
+            { category: '📚 Hobi Membaca Novel', items: ['Novel Fiksi & Fantasi', 'Novel Young Adult / Romance', 'Koleksi & Review Buku'] },
+            { category: '🎨 Hobi Menggambar', items: ['Sketsa Kucing Abu-Abu 🐱', 'Menggambar Digital', 'Gradasi Warna', 'Desain Poster'] },
+            { category: '🎤 Hobi Menyanyi & Menari', items: ['Vokal K-Pop & Jazz', 'Modern Dance', 'Paduan Suara', 'Koreografi'] },
+            { category: '🏫 Sekolah Mutiara Bangsa 2', items: ['Siswa Kelas 9A', 'Kreativitas Kelompok', 'Pentas Seni'] }
+        ];
+
+        // Store Application State in LocalStorage
+        function getStoredData(key, fallback) {
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : fallback;
+        }
+
+        function setStoredData(key, value) {
+            localStorage.setItem(key, JSON.stringify(value));
+        }
+
+        // Global App State
+        let appData = {
+            auth: getStoredData('app_auth', { user: 'admin', pass: 'admin123', loggedIn: false }),
+            projects: getStoredData('app_projects', defaultProjects),
+            profile: getStoredData('app_profile', {
+                brandName: 'Fellicia.9A',
+                heroBadge: '✨ Siswa Kelas 9A - Mutiara Bangsa 2 ✨',
+                heroSub: 'Selamat datang di ruang kreatif pribadi saya! Di sini saya membagikan karya gambar kucing abu-abu, membaca novel fiksi, bernyanyi, menari, musik R&B/Jazz & K-Pop favorit, serta project-project seru dari sekolah Mutiara Bangsa 2.',
+                about1: 'Halo! Nama saya Fellicia dari kelas 9A Sekolah Mutiara Bangsa 2. Saya sangat menyukai dunia seni, membaca novel, musik K-Pop, dan ekspresi kreatif.',
+                about2: 'Hari-hari saya diisi dengan mendengarkan musik R&B, Pop, Jazz, & K-Pop favorit dari LNGSHOT (bias: Louis), CORTIS (bias: Martin), BLACKPINK (bias: Jennie), Rex Orange, Daniel Caesar, Laufey, serta menggambar kucing abu-abu lucu dan membaca novel-novel seru!'
+            }),
+            skills: getStoredData('app_skills', defaultSkills),
+            messages: getStoredData('app_messages', [])
+        };
+
+        // --- TYPEWRITER EFFECT LOGIC ---
+        function startTypewriter() {
+            const phrases = [
+                "Siswa Sekolah Mutiara Bangsa 2 🏫",
+                "Fans K-Pop: LNGSHOT (Louis) 💖",
+                "Fans K-Pop: CORTIS (Martin) 💖",
+                "Fans K-Pop: BLACKPINK (Jennie) 💖",
+                "Pencinta Genre R&B, Pop, Jazz & K-Pop 🎧",
+                "Hobi Membaca Novel 📚",
+                "Hobi Menyanyi 🎤",
+                "Hobi Menari 💃",
+                "Hobi Menggambar Kucing Abu 🐱🎨"
+            ];
+            let phraseIdx = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+            const target = document.getElementById('typewriter');
+            if(!target) return;
+
+            function type() {
+                const currentPhrase = phrases[phraseIdx];
+                if (isDeleting) {
+                    target.textContent = currentPhrase.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    target.textContent = currentPhrase.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let typeSpeed = isDeleting ? 30 : 70;
+
+                if (!isDeleting && charIdx === currentPhrase.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                    typeSpeed = 400;
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            type();
+        }
+
+        // --- DIAMOND & STAR CLICK EASTER EGG EFFECT ---
+        function initDiamondClickEffect() {
+            document.addEventListener('click', (e) => {
+                createDiamondEffect(e.clientX, e.clientY);
+            });
+        }
+
+        function createDiamondEffect(x, y) {
+            const emojis = ['💎', '✨', '🌟', '💫', '💖', '👑', '📚'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+            const diamondEle = document.createElement('div');
+            diamondEle.className = 'diamond-pop text-2xl drop-shadow-lg';
+            diamondEle.style.left = `${x}px`;
+            diamondEle.style.top = `${y}px`;
+            diamondEle.textContent = randomEmoji;
+
+            document.body.appendChild(diamondEle);
+            setTimeout(() => diamondEle.remove(), 900);
+        }
+
+        // --- RENDER VISITOR FRONTEND ---
+        function renderVisitorPage() {
+            // Render Profile Texts
+            document.getElementById('navBrandName').innerHTML = `${appData.profile.brandName.split('.')[0]}<span class="text-frenchnavy-rarity font-sans text-lg font-bold">.${appData.profile.brandName.split('.')[1] || '9A ✨'}</span>`;
+            document.getElementById('heroBadge').textContent = appData.profile.heroBadge;
+            document.getElementById('heroSubtitle').textContent = appData.profile.heroSub;
+            document.getElementById('aboutText1').textContent = appData.profile.about1;
+            document.getElementById('aboutText2').textContent = appData.profile.about2;
+            document.getElementById('statProjects').textContent = `${appData.projects.length}+`;
+
+            // Render Dynamic Projects Grid
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+
+            appData.projects.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'project-card group bg-frenchnavy-900 rounded-3xl border-2 border-frenchnavy-700 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col';
+                card.setAttribute('data-category', p.category);
+
+                const techBadges = p.tech.map(t => `<span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-purple-950 border border-purple-700/60 text-purple-300">${t}</span>`).join('');
+
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-video bg-frenchnavy-950">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 flex items-center justify-center p-6 text-white group-hover:scale-105 transition duration-500">
+                            <div class="text-center">
+                                <span class="text-4xl mb-2 block">
+                                    ${p.category === 'menggambar' ? '🎨' : p.category === 'novel' ? '📚' : p.category === 'menyanyi' ? '🎤' : p.category === 'menari' ? '💃' : '🏫'}
+                                </span>
+                                <span class="font-bodoni font-bold tracking-wide text-lg text-purple-100">${p.title}</span>
+                            </div>
+                        </div>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-frenchnavy-950/90 backdrop-blur-md text-xs font-bold text-frenchnavy-glow uppercase border border-purple-500/30">
+                            ${p.category}
+                        </span>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bodoni font-bold text-white group-hover:text-frenchnavy-glow transition">
+                                ${p.title}
+                            </h3>
+                            <p class="text-slate-300 text-xs sm:text-sm mt-2 line-clamp-2">
+                                ${p.desc}
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">${techBadges}</div>
+                        <div class="pt-3 border-t border-frenchnavy-700 flex items-center justify-between">
+                            <button onclick="openModal('${p.title}', '${p.desc.replace(/'/g, "\\'")}', ${JSON.stringify(p.tech).replace(/"/g, '&quot;')}, '${p.github}', '${p.demo}')" class="text-xs font-bold text-purple-400 hover:underline flex items-center gap-1">
+                                Lihat Detail Karya <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <span class="text-sm">💎</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Render Skills
+            const skillsDiv = document.getElementById('skillsContainer');
+            skillsDiv.innerHTML = '';
+            appData.skills.forEach(s => {
+                const group = document.createElement('div');
+                const itemsHtml = s.items.map(i => `<span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-frenchnavy-950 border border-frenchnavy-700 text-purple-300">${i}</span>`).join('');
+                group.innerHTML = `
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block mb-2">${s.category}</span>
+                    <div class="flex flex-wrap gap-2">${itemsHtml}</div>
+                `;
+                skillsDiv.appendChild(group);
+            });
+
+            lucide.createIcons();
+            initFilterButtons();
+        }
+
+        // --- FILTER BUTTON LOGIC ---
+        function initFilterButtons() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.onclick = () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-purple-600', 'text-white', 'shadow-md');
+                        b.classList.add('text-slate-300');
+                    });
+                    btn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+                    btn.classList.remove('text-slate-300');
+
+                    const val = btn.getAttribute('data-filter');
+                    projectCards.forEach(card => {
+                        if (val === 'all' || card.getAttribute('data-category') === val) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                };
+            });
+        }
+
+        // --- VISITOR CONTACT FORM HANDLER ---
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const msg = {
+                id: Date.now(),
+                name: document.getElementById('senderName').value,
+                email: document.getElementById('senderEmail').value,
+                subject: document.getElementById('senderSubject').value,
+                message: document.getElementById('senderMessage').value,
+                date: new Date().toLocaleDateString('id-ID')
+            };
+
+            appData.messages.unshift(msg);
+            setStoredData('app_messages', appData.messages);
+
+            document.getElementById('formAlert').classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => document.getElementById('formAlert').classList.add('hidden'), 4000);
+        }
+
+        // --- LOGIN & AUTHENTICATION LOGIC ---
+        function showLoginModal() {
+            if (appData.auth.loggedIn) {
+                switchView('admin');
+            } else {
+                document.getElementById('loginModal').classList.remove('hidden');
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+            document.getElementById('loginError').classList.add('hidden');
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const u = document.getElementById('loginUser').value;
+            const p = document.getElementById('loginPass').value;
+
+            if (u === appData.auth.user && p === appData.auth.pass) {
+                appData.auth.loggedIn = true;
+                setStoredData('app_auth', appData.auth);
+                closeLoginModal();
+                switchView('admin');
+                renderAdminDashboard();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            appData.auth.loggedIn = false;
+            setStoredData('app_auth', appData.auth);
+            switchView('visitor');
+        }
+
+        function switchView(view) {
+            if (view === 'admin') {
+                document.getElementById('visitorView').classList.add('hidden');
+                document.getElementById('adminView').classList.remove('hidden');
+            } else {
+                document.getElementById('adminView').classList.add('hidden');
+                document.getElementById('visitorView').classList.remove('hidden');
+                renderVisitorPage();
+            }
+        }
+
+        function exitAdminView() {
+            switchView('visitor');
+        }
+
+        // --- ADMIN DASHBOARD RENDER & ACTIONS ---
+        function renderAdminDashboard() {
+            // Render Stats
+            document.getElementById('dashTotalProjects').textContent = appData.projects.length;
+            document.getElementById('dashTotalMessages').textContent = appData.messages.length;
+            document.getElementById('unreadBadge').textContent = appData.messages.length;
+
+            // Populate Form Settings
+            document.getElementById('inputBrandName').value = appData.profile.brandName;
+            document.getElementById('inputHeroBadge').value = appData.profile.heroBadge;
+            document.getElementById('inputHeroSub').value = appData.profile.heroSub;
+            document.getElementById('inputAbout1').value = appData.profile.about1;
+            document.getElementById('inputAbout2').value = appData.profile.about2;
+            document.getElementById('newUsername').value = appData.auth.user;
+
+            // Render Table Projects
+            const table = document.getElementById('adminProjectTable');
+            table.innerHTML = '';
+            appData.projects.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-frenchnavy-800/40 transition';
+                tr.innerHTML = `
+                    <td class="p-4 font-bold text-white">${p.title}</td>
+                    <td class="p-4 text-purple-400 uppercase font-semibold">${p.category}</td>
+                    <td class="p-4 text-slate-400">${p.tech.join(', ')}</td>
+                    <td class="p-4 text-right space-x-2">
+                        <button onclick="editProject(${p.id})" class="p-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
+                        <button onclick="deleteProject(${p.id})" class="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 hover:bg-rose-500/30"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+                    </td>
+                `;
+                table.appendChild(tr);
+            });
+
+            // Render Messages List
+            const msgList = document.getElementById('messageListContainer');
+            msgList.innerHTML = '';
+            if (appData.messages.length === 0) {
+                msgList.innerHTML = '<div class="p-8 text-center text-xs text-slate-500 bg-frenchnavy-900 rounded-2xl">Belum ada pesan masuk dari pengunjung.</div>';
+            } else {
+                appData.messages.forEach(m => {
+                    const card = document.createElement('div');
+                    card.className = 'p-4 rounded-2xl bg-frenchnavy-900 border border-frenchnavy-700 space-y-2';
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white text-sm">${m.name} <span class="text-xs text-purple-400 font-normal">(${m.email})</span></span>
+                            <span class="text-[10px] text-slate-500 font-mono">${m.date}</span>
+                        </div>
+                        <div class="text-xs font-semibold text-purple-300">Subjek: ${m.subject}</div>
+                        <p class="text-xs text-slate-300 leading-relaxed bg-frenchnavy-950 p-3 rounded-xl border border-frenchnavy-700">${m.message}</p>
+                    `;
+                    msgList.appendChild(card);
+                });
+            }
+
+            lucide.createIcons();
+        }
+
+        // Switch Admin Sidebar Tabs
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabName) {
+                    btn.classList.add('bg-purple-600', 'text-white');
+                    btn.classList.remove('text-slate-400', 'hover:bg-frenchnavy-800');
+                } else {
+                    btn.classList.remove('bg-purple-600', 'text-white');
+                    btn.classList.add('text-slate-400', 'hover:bg-frenchnavy-800');
+                }
+            });
+
+            document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.add('hidden'));
+            if (tabName === 'overview') document.getElementById('adminTabOverview').classList.remove('hidden');
+            if (tabName === 'projects') document.getElementById('adminTabProjects').classList.remove('hidden');
+            if (tabName === 'profile') document.getElementById('adminTabProfile').classList.remove('hidden');
+            if (tabName === 'messages') document.getElementById('adminTabMessages').classList.remove('hidden');
+            if (tabName === 'settings') document.getElementById('adminTabSettings').classList.remove('hidden');
+        }
+
+        // CRUD Project Functions
+        function openProjectModal() {
+            document.getElementById('editProjectId').value = '';
+            document.getElementById('projTitle').value = '';
+            document.getElementById('projCategory').value = 'menggambar';
+            document.getElementById('projDesc').value = '';
+            document.getElementById('projTech').value = '';
+            document.getElementById('projGithub').value = '';
+            document.getElementById('projDemo').value = '';
+            document.getElementById('projectModalHeading').textContent = 'Tambah Karya Baru';
+            document.getElementById('projectEditModal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectEditModal').classList.add('hidden');
+        }
+
+        function editProject(id) {
+            const p = appData.projects.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById('editProjectId').value = p.id;
+            document.getElementById('projTitle').value = p.title;
+            document.getElementById('projCategory').value = p.category;
+            document.getElementById('projDesc').value = p.desc;
+            document.getElementById('projTech').value = p.tech.join(', ');
+            document.getElementById('projGithub').value = p.github;
+            document.getElementById('projDemo').value = p.demo;
+            document.getElementById('projectModalHeading').textContent = 'Edit Karya';
+            document.getElementById('projectEditModal').classList.remove('hidden');
+        }
+
+        function saveProjectForm(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editProjectId').value;
+            const title = document.getElementById('projTitle').value;
+            const category = document.getElementById('projCategory').value;
+            const desc = document.getElementById('projDesc').value;
+            const tech = document.getElementById('projTech').value.split(',').map(t => t.trim());
+            const github = document.getElementById('projGithub').value;
+            const demo = document.getElementById('projDemo').value;
+
+            if (editId) {
+                const idx = appData.projects.findIndex(p => p.id == editId);
+                if (idx !== -1) {
+                    appData.projects[idx] = { id: Number(editId), title, category, desc, tech, github, demo };
+                }
+            } else {
+                const newProj = { id: Date.now(), title, category, desc, tech, github, demo };
+                appData.projects.push(newProj);
+            }
+
+            setStoredData('app_projects', appData.projects);
+            closeProjectModal();
+            renderAdminDashboard();
+        }
+
+        function deleteProject(id) {
+            if (confirm('Apakah kamu yakin ingin menghapus karya ini?')) {
+                appData.projects = appData.projects.filter(p => p.id !== id);
+                setStoredData('app_projects', appData.projects);
+                renderAdminDashboard();
+            }
+        }
+
+        // Save Profile & Admin Creds Settings
+        function saveProfileSettings(e) {
+            e.preventDefault();
+            appData.profile.brandName = document.getElementById('inputBrandName').value;
+            appData.profile.heroBadge = document.getElementById('inputHeroBadge').value;
+            appData.profile.heroSub = document.getElementById('inputHeroSub').value;
+            appData.profile.about1 = document.getElementById('inputAbout1').value;
+            appData.profile.about2 = document.getElementById('inputAbout2').value;
+
+            setStoredData('app_profile', appData.profile);
+            alert('Bio & Teks Fellicia berhasil disimpan! 💎✨');
+        }
+
+        function saveAdminCredentials(e) {
+            e.preventDefault();
+            const u = document.getElementById('newUsername').value;
+            const p = document.getElementById('newPassword').value;
+
+            appData.auth.user = u;
+            appData.auth.pass = p;
+            setStoredData('app_auth', appData.auth);
+            alert('Password Admin berhasil diperbarui!');
+        }
+
+        // Modal Visitor Detail
+        function openModal(title, desc, techArray, githubUrl, demoUrl) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = desc;
+            
+            const modalTech = document.getElementById('modalTech');
+            modalTech.innerHTML = '';
+            techArray.forEach(tech => {
+                const badge = document.createElement('span');
+                badge.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-frenchnavy-950 border border-frenchnavy-700 text-purple-300';
+                badge.textContent = tech;
+                modalTech.appendChild(badge);
+            });
+
+            document.getElementById('modalSourceBtn').href = githubUrl || '#';
+            document.getElementById('modalDemoBtn').href = demoUrl || '#';
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
